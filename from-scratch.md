@@ -370,4 +370,18 @@ Modify: 2025-07-30 11:50:33.412021711 +0000
 Change: 2025-07-30 12:08:06.768795761 +0000
  Birth: 2025-07-30 11:50:33.412021711 +0000
 
-done
+done!
+
+
+### toublesome with oracle vps
+- we get ubuntu group account, not root 
+the only way to fix this is, to put www-data into ubuntu
+sudo usermod -aG ubuntu www-data
+
+sudo chown -R ubuntu:www-data /home/ubuntu/word.diacritics.xyz
+sudo chmod -R 750 /home/ubuntu/word.diacritics.xyz
+sudo find /home/ubuntu/word.diacritics.xyz/public -type d -exec chmod 755 {} \;
+sudo find /home/ubuntu/word.diacritics.xyz/public -type f -exec chmod 644 {} \;
+
+test file permission
+sudo -u www-data stat /home/ubuntu/word.diacritics.xyz/public/index.php
